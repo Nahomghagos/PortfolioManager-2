@@ -20,7 +20,23 @@ public class Portfolio {
     public void add(Valuable asset){
         assets.add(asset);
     }
-    public BigDecimal get
+    public BigDecimal getValue() {
+        BigDecimal total = BigDecimal.ZERO;
+        for (Valuable asset : assets) {
+            total = total.add(asset.getValue());
+        }
+        return total;
+    }
+    public Valuable getMostValuable() {
+        Valuable mostValuable = assets.get(0);
+        for (Valuable asset : assets) {
+            if (asset.getValue().compareTo(mostValuable.getValue()) > 0) {
+                mostValuable = asset;
+            }
+        }
+        return mostValuable;
+    }
+
 
 
 }
